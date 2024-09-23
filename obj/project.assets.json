@@ -433,9 +433,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWaks\\NZWaks.csproj",
-      "projectName": "NZWaks",
-      "projectPath": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWaks\\NZWaks.csproj",
+      "projectUniqueName": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWaks\\NZWaks.API.csproj",
+      "projectName": "NZWaks.API",
+      "projectPath": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWaks\\NZWaks.API.csproj",
       "packagesPath": "C:\\Users\\a1bg532545\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWaks\\obj\\",
       "projectStyle": "PackageReference",

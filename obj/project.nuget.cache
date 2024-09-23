@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4HCHKoPqWVGhUqkxFdWCCXyYPDFZ3U2JsQpwlRmnjph+45DVM2Ky7CQtXB6XaRblnvYz6oBkk9S5DD9oGnqc0w==",
+  "dgSpecHash": "xDDKAVQc7AXrGqwp4bncMz2Q/ISGxe1zDYnv+fMdOPGfi5Cgrf9C/Cg8V0X2/OBYh4C0vc2/VOGe9mNphQBGhQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWaks\\NZWaks.csproj",
+  "projectFilePath": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWaks\\NZWaks.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\a1bg532545\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\a1bg532545\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
