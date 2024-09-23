@@ -1,0 +1,6 @@
+@NZWaks_HostAddress = http://localhost:5062
+
+GET {{NZWaks_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
