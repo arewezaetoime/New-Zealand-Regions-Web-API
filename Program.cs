@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using NZWaks.API.Data;
+
 namespace NZWaks
 {
     public class Program
@@ -13,6 +16,9 @@ namespace NZWaks
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // Injecting our DbContext Class below
+            builder.Services.AddDbContext<NZWalksDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksConnectionString")));
 
             var app = builder.Build();
 

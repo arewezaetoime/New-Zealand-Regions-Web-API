@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "7U0b8CyKdReZr25MN4OAu8DB4iOe9frfDtdJsn7h804=",
-  "Source": "NZWaks",
-  "BasePath": "_content/NZWaks",
+  "Hash": "YG8OIYAhJhUKzv0jY59czyyfYfv56D0QCSUHMR3eI24=",
+  "Source": "NZWaks.API",
+  "BasePath": "_content/NZWaks.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

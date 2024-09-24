@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\NZWaks.API.props" />
+</Project>
