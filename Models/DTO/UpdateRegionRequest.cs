@@ -1,0 +1,6 @@
+﻿namespace NZWaks.API.Models.DTO
+{
+    public class UpdateRegionRequest
+    {
+    }
+}
