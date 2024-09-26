@@ -66,8 +66,9 @@ namespace NZWaks.API.Controllers
 
         // POST request - creating a new Region record and adding it to the database
         //https://localhost:portnumber/api/regions
-        [HttpPost, ActionName("dai region, smeshko")]
-        public IActionResult CreateNewRegion([FromBody] AddRegionRequestDto addRegionRequestDto)
+
+        [HttpPost]
+        public IActionResult CreateRegion([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
             // Mapping the DTO to a model instance
             var addRegionModel = new Region
@@ -92,7 +93,62 @@ namespace NZWaks.API.Controllers
 
             return CreatedAtAction(nameof(GetRegionById), new { id = returnDto.Id }, returnDto);
         }
+
+        // PUT request - creating a new Region record and adding it to the database
+        //https://localhost:portnumber/api/regions/{id}
+
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public IActionResult UpdateRegion([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
+        {
+            // check if the region exists
+            var regionDomainModel = dbContext.Regions.FirstOrDefault(x => x.Id == id);
+
+            if (regionDomainModel == null)
+            {
+                return NotFound();
+            }
+            // again map the dto to a model // update the region model props with the values from the dto
+            regionDomainModel.Code = updateRegionRequestDto.Code;
+            regionDomainModel.Name = updateRegionRequestDto.Name;
+            regionDomainModel.RegionImageUrl = updateRegionRequestDto.RegionImageUrl;
+            dbContext.SaveChanges();
+
+            //convert the model to dto and return 
+            var regionDto = new RegionDto
+            {
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegionImageUrl = regionDomainModel.RegionImageUrl
+            };
+            return Ok(regionDto);
+        }
+
+        // DELETE request - deleting a Region record from the database
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public IActionResult DeleteRegion([FromRoute] Guid id)
+        {
+            var regionDomainModel = dbContext.Regions.FirstOrDefault(x => x.Id == id);
+            if (regionDomainModel == null)
+            {
+                return NotFound(id);
+            }
+
+            dbContext.Regions.Remove(regionDomainModel);
+            dbContext.SaveChanges();
+
+            var regionDto = new RegionDto
+            {
+                Id = regionDomainModel.Id,
+                Code = regionDomainModel.Code,
+                Name = regionDomainModel.Name,
+                RegionImageUrl = regionDomainModel.RegionImageUrl
+            };
+
+            return Ok(regionDto);
+        }
     }
 }
-
 // This is a basic implementation of a GET endpoint for retrieving all regionDomainModels from the database.   
