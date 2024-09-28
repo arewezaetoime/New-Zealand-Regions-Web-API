@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NZWaks.API.Data;
 using NZWaks.API.Models.Domain;
 using NZWaks.API.Models.Dto;
@@ -19,9 +20,10 @@ namespace NZWaks.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllRegions()
+        public async Task<IActionResult> GetAllRegions()
         {
-            var regionDomainModels = dbContext.Regions.ToList();
+            var regionDomainModels = await dbContext.Regions.ToListAsync();
+
 
             //Map domain models to DTOs
             var regionsDtos = new List<RegionDto>();
@@ -41,9 +43,9 @@ namespace NZWaks.API.Controllers
 
         [HttpGet]
         [Route("{id:Guid}")]
-        public IActionResult GetRegionById([FromRoute] Guid id)
+        public async Task<IActionResult> GetRegionById([FromRoute] Guid id)
         {
-            var regionDomainModel = dbContext.Regions.FirstOrDefault(r => r.Id == id);
+            var regionDomainModel = await dbContext.Regions.FirstOrDefaultAsync(r => r.Id == id);
             //alternative way to get the regionDomainModel
             // var region2 = dbContext.Regions.Find(id);
 
@@ -68,7 +70,7 @@ namespace NZWaks.API.Controllers
         //https://localhost:portnumber/api/regions
 
         [HttpPost]
-        public IActionResult CreateRegion([FromBody] AddRegionRequestDto addRegionRequestDto)
+        public async Task<IActionResult> CreateRegion([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
             // Mapping the DTO to a model instance
             var addRegionModel = new Region
@@ -78,7 +80,7 @@ namespace NZWaks.API.Controllers
                 RegionImageUrl = addRegionRequestDto.RegionImageUrl
             };
 
-            dbContext.Regions.Add(addRegionModel);
+            await dbContext.Regions.AddAsync(addRegionModel);
             dbContext.SaveChanges();
 
             // Map the added region model to a DTO for returning back to the client
@@ -99,10 +101,10 @@ namespace NZWaks.API.Controllers
 
         [HttpPut]
         [Route("{id:Guid}")]
-        public IActionResult UpdateRegion([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
+        public async Task<IActionResult> UpdateRegion([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
         {
             // check if the region exists
-            var regionDomainModel = dbContext.Regions.FirstOrDefault(x => x.Id == id);
+            var regionDomainModel = await dbContext.Regions.FirstOrDefaultAsync(x => x.Id == id);
 
             if (regionDomainModel == null)
             {
@@ -128,9 +130,9 @@ namespace NZWaks.API.Controllers
         // DELETE request - deleting a Region record from the database
         [HttpDelete]
         [Route("{id:Guid}")]
-        public IActionResult DeleteRegion([FromRoute] Guid id)
+        public async Task<IActionResult> DeleteRegion([FromRoute] Guid id)
         {
-            var regionDomainModel = dbContext.Regions.FirstOrDefault(x => x.Id == id);
+            var regionDomainModel = await dbContext.Regions.FirstOrDefaultAsync(x => x.Id == id);
             if (regionDomainModel == null)
             {
                 return NotFound(id);
