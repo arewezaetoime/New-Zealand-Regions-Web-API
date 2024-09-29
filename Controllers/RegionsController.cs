@@ -5,6 +5,7 @@ using NZWaks.API.Data;
 using NZWaks.API.Models.Domain;
 using NZWaks.API.Models.Dto;
 using NZWaks.API.Models.DTO;
+using NZWaks.API.Repositories;
 
 namespace NZWaks.API.Controllers
 {
@@ -13,16 +14,18 @@ namespace NZWaks.API.Controllers
     public class RegionsController : ControllerBase
     {
         private readonly NZWalksDBContext dbContext;
+        private readonly IRegionRepository regionRepository;
 
-        public RegionsController(NZWalksDBContext dBContext)
+        public RegionsController(NZWalksDBContext dBContext, IRegionRepository regionRepository)
         {
             this.dbContext = dBContext;
+            this.regionRepository = regionRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllRegions()
         {
-            var regionDomainModels = await dbContext.Regions.ToListAsync();
+            var regionDomainModels = await regionRepository.GetAllRegionsAsync();
 
 
             //Map domain models to DTOs
@@ -138,8 +141,8 @@ namespace NZWaks.API.Controllers
                 return NotFound(id);
             }
 
-            object value = await dbContext.Regions.Remove(regionDomainModel);
-            dbContext.SaveChanges();
+            dbContext.Regions.Remove(regionDomainModel);
+            await dbContext.SaveChangesAsync();
 
             var regionDto = new RegionDto
             {
@@ -153,4 +156,3 @@ namespace NZWaks.API.Controllers
         }
     }
 }
-// This is a basic implementation of a GET endpoint for retrieving all regionDomainModels from the database.   
