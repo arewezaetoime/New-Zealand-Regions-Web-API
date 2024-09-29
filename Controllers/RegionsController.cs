@@ -81,7 +81,7 @@ namespace NZWaks.API.Controllers
             };
 
             await dbContext.Regions.AddAsync(addRegionModel);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             // Map the added region model to a DTO for returning back to the client
 
@@ -114,7 +114,7 @@ namespace NZWaks.API.Controllers
             regionDomainModel.Code = updateRegionRequestDto.Code;
             regionDomainModel.Name = updateRegionRequestDto.Name;
             regionDomainModel.RegionImageUrl = updateRegionRequestDto.RegionImageUrl;
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             //convert the model to dto and return 
             var regionDto = new RegionDto
@@ -138,7 +138,7 @@ namespace NZWaks.API.Controllers
                 return NotFound(id);
             }
 
-            dbContext.Regions.Remove(regionDomainModel);
+            object value = await dbContext.Regions.Remove(regionDomainModel);
             dbContext.SaveChanges();
 
             var regionDto = new RegionDto
