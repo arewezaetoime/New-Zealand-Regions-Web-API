@@ -48,7 +48,6 @@ C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\System.Memory.
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\System.Runtime.Caching.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\System.Windows.Extensions.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -130,9 +129,9 @@ C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\staticwebasset
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.NZWaks.API.props
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\scopedcss\bundle\NZWaks.API.styles.css
-C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.csproj.CopyComplete
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\refint\NZWaks.API.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.pdb
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.genruntimeconfig.cache
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\ref\NZWaks.API.dll
+C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.csproj.Up2Date
