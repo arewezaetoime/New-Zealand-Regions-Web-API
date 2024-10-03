@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using NZWaks.API.Data;
+using NZWaks.API.Mappings;
 using NZWaks.API.Repositories;
 
 namespace NZWaks
@@ -22,6 +23,8 @@ namespace NZWaks
             builder.Services.AddDbContext<NZWalksDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksConnectionString")));
             //Injecting IRegionRepository with implementation for SQL database
             builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
+            //Injecting Automapper
+            builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
 
             var app = builder.Build();
 

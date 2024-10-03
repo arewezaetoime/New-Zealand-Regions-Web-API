@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NZWaks.API.Data;
+using NZWaks.API.Mappings;
 using NZWaks.API.Models.Domain;
 using NZWaks.API.Models.Dto;
 using NZWaks.API.Models.DTO;
@@ -14,10 +16,12 @@ namespace NZWaks.API.Controllers
     public class RegionsController : ControllerBase
     {
         private readonly IRegionRepository regionRepository;
+        private readonly IMapper mapper;
 
-        public RegionsController(IRegionRepository regionRepository)
+        public RegionsController(IRegionRepository regionRepository, IMapper mapper)
         {
             this.regionRepository = regionRepository;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -27,17 +31,7 @@ namespace NZWaks.API.Controllers
 
 
             //Map domain models to DTOs
-            var regionsDtos = new List<RegionDto>();
-            foreach (var region in regionDomainModels)
-            {
-                regionsDtos.Add(new RegionDto()
-                {
-                    Id = region.Id,
-                    Code = region.Code,
-                    Name = region.Name,
-                    RegionImageUrl = region.RegionImageUrl
-                });
-            }
+            var regionsDtos = mapper.Map<List<RegionDto>>(regionDomainModels);
             // Return the DTO not the model
             return Ok(regionsDtos);
         }

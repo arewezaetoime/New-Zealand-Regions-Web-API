@@ -135,3 +135,4 @@ C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.pdb
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.genruntimeconfig.cache
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\ref\NZWaks.API.dll
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\obj\Debug\net8.0\NZWaks.API.csproj.Up2Date
+C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWaks\bin\Debug\net8.0\AutoMapper.dll
