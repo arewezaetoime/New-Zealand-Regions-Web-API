@@ -51,13 +51,7 @@ namespace NZWaks.API.Controllers
             }
 
             // Map the domain models to DTOs
-            var regionDtoById = new RegionDto()
-            {
-                Id = regionDomainModel.Id,
-                Code = regionDomainModel.Code,
-                Name = regionDomainModel.Name,
-                RegionImageUrl = regionDomainModel.RegionImageUrl
-            };
+            var regionDtoById = mapper.Map<RegionDto>(regionDomainModel);
             // Return the DTO back to the client, but not the model itself 
             return Ok(regionDtoById);
         }
