@@ -13,10 +13,9 @@ namespace NZWaks.API.Controllers
     [ApiController]
     public class RegionsController : ControllerBase
     {
-        private readonly NZWalksDBContext dbContext;
         private readonly IRegionRepository regionRepository;
 
-        public RegionsController(NZWalksDBContext dBContext, IRegionRepository regionRepository)
+        public RegionsController(IRegionRepository regionRepository)
         {
             this.regionRepository = regionRepository;
         }
