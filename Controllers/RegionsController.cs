@@ -64,13 +64,7 @@ namespace NZWaks.API.Controllers
         public async Task<IActionResult> CreateRegion([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
             // Mapping the DTO to a model instance
-            var addRegionModel = new Region
-            {
-                Id = Guid.NewGuid(),
-                Code = addRegionRequestDto.Code,
-                Name = addRegionRequestDto.Name,
-                RegionImageUrl = addRegionRequestDto.RegionImageUrl
-            };
+            var addRegionModel = mapper.Map<Region>(addRegionRequestDto);
 
             var repositoryResponseModel = await regionRepository.CreateRegionAsync(addRegionModel);
 
@@ -80,13 +74,7 @@ namespace NZWaks.API.Controllers
                 return NotFound();
             }
 
-            var returnDto = new RegionDto()
-            {
-                Id = addRegionModel.Id,
-                Code = addRegionModel.Code,
-                Name = addRegionModel.Name,
-                RegionImageUrl = addRegionModel.RegionImageUrl
-            };
+            var returnDto = mapper.Map<RegionDto>(addRegionModel);
 
             return CreatedAtAction(nameof(GetRegionById), new { id = returnDto.Id }, returnDto);
 
@@ -100,12 +88,7 @@ namespace NZWaks.API.Controllers
         public async Task<IActionResult> UpdateRegion([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
         {
             //map the dto to a domain model and pass it to the repository 
-            var regionDomainModel = new Region
-            {
-                Code = updateRegionRequestDto.Code,
-                Name = updateRegionRequestDto.Name,
-                RegionImageUrl = updateRegionRequestDto.RegionImageUrl
-            };
+            var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
             regionDomainModel = await regionRepository.UpdateRegionAsync(id, regionDomainModel);
 
             //check if the model is null then proceed accordingly 
@@ -113,15 +96,9 @@ namespace NZWaks.API.Controllers
             {
                 return NotFound();
             }
-            
+
             //convert the model to dto and return 
-            var returnRegionDto = new RegionDto
-            {
-                Id = regionDomainModel.Id,
-                Code = regionDomainModel.Code,
-                Name = regionDomainModel.Name,
-                RegionImageUrl = regionDomainModel.RegionImageUrl
-            };
+            var returnRegionDto = mapper.Map<RegionDto>(regionDomainModel);
             return Ok(returnRegionDto);
         }
 
@@ -138,13 +115,7 @@ namespace NZWaks.API.Controllers
                 return NotFound(id);
             }
 
-            var regionDto = new RegionDto
-            {
-                Id = regionDomainModel.Id,
-                Code = regionDomainModel.Code,
-                Name = regionDomainModel.Name,
-                RegionImageUrl = regionDomainModel.RegionImageUrl
-            };
+            var regionDto = mapper.Map<RegionDto>(regionDomainModel);
 
             return Ok(regionDto);
         }
