@@ -31,5 +31,18 @@ namespace NZWaks.API.Controllers
             // Map the created walk model to a DTO for returning back to the client
             return Ok(mapper.Map<WalkDto>(walkModel));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllWalks()
+        {
+            var walksDomainModels = await walkRepository.GetAllWalksAsync();
+
+            if (walksDomainModels == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(mapper.Map<List<WalkDto>>(walksDomainModels));
+        }
     }
 }

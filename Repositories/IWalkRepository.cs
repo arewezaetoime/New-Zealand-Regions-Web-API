@@ -5,5 +5,6 @@ namespace NZWaks.API.Repositories
     public interface IWalkRepository
     {
         Task<Walk> CreateWalkAsync(Walk walk);
+        Task<List<Walk>> GetAllWalksAsync();
     }
 }

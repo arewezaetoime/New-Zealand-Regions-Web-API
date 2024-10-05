@@ -93,5 +93,15 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NZWaks.API.Controllers.WalksController",
+    "Method": "GetAllWalks",
+    "RelativePath": "api/Walks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]
