@@ -12,9 +12,9 @@ namespace NZWaks.API.Controllers
     public class WalksController : ControllerBase
     {
         private readonly IMapper mapper;
-        private readonly SQLWalkRepository walkRepository;
+        private readonly IWalkRepository walkRepository;
 
-        public WalksController(IMapper mapper, SQLWalkRepository walkRepository)
+        public WalksController(IMapper mapper, IWalkRepository walkRepository)
         {
             this.mapper = mapper;
             this.walkRepository = walkRepository;

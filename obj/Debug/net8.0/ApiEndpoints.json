@@ -77,5 +77,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NZWaks.API.Controllers.WalksController",
+    "Method": "Create",
+    "RelativePath": "api/Walks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createWalkDto",
+        "Type": "NZWaks.API.Models.DTO.WalkDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

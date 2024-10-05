@@ -21,8 +21,9 @@ namespace NZWaks
 
             // Injecting our DbContext Class below
             builder.Services.AddDbContext<NZWalksDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksConnectionString")));
-            //Injecting IRegionRepository with implementation for SQL database
+            //Injecting IRegionRepository as well as IWalkRepository with implementation for SQL database
             builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
+            builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
             //Injecting Automapper
             builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
 

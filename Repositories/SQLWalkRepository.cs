@@ -1,6 +1,22 @@
-﻿namespace NZWaks.API.Repositories
+﻿using NZWaks.API.Data;
+using NZWaks.API.Models.Domain;
+
+namespace NZWaks.API.Repositories
 {
-    public class Class
+    public class SQLWalkRepository : IWalkRepository
     {
+        private readonly NZWalksDBContext dbContext;
+
+        public SQLWalkRepository(NZWalksDBContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
+        public async Task<Walk> CreateWalkAsync(Walk walk)
+        {
+            await dbContext.Walks.AddAsync(walk);
+            await dbContext.SaveChangesAsync();
+            return walk;
+        }
     }
 }
