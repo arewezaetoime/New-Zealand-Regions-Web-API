@@ -140,5 +140,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NZWaks.API.Controllers.WalksController",
+    "Method": "DeleteWalk",
+    "RelativePath": "api/Walks/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

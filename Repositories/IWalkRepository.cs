@@ -9,5 +9,6 @@ namespace NZWaks.API.Repositories
         Task<List<Walk>> GetAllWalksAsync();
         Task<Walk> GetWalkByIdAsync(Guid id);
         Task<Walk> UpdateWalkAsync(Guid id, Walk walkDomainModel);
+        Task<Walk> DeleteWalkAsync(Guid id);
     }
 }
