@@ -1,4 +1,5 @@
 ﻿using NZWaks.API.Models.Domain;
+using NZWaks.API.Models.DTO;
 
 namespace NZWaks.API.Repositories
 {
@@ -6,5 +7,7 @@ namespace NZWaks.API.Repositories
     {
         Task<Walk> CreateWalkAsync(Walk walk);
         Task<List<Walk>> GetAllWalksAsync();
+        Task<Walk> GetWalkByIdAsync(Guid id);
+        Task<Walk> UpdateWalkAsync(Guid id, Walk walkDomainModel);
     }
 }
