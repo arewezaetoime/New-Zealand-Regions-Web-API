@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NZWaks.API.Models.Domain;
+using NZWaks.API.Models.Dto;
 using NZWaks.API.Models.DTO;
 using NZWaks.API.Repositories;
 
@@ -68,6 +69,21 @@ namespace NZWaks.API.Controllers
             if(walkDomainModel == null)
             {
                 return NotFound();
+            }
+
+            return Ok(mapper.Map<WalkDto>(walkDomainModel));
+        }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> DeleteWalk([FromRoute] Guid id)
+        {
+
+            var walkDomainModel = await walkRepository.DeleteWalkAsync(id);
+
+            if (walkDomainModel == null)
+            {
+                return NotFound(id);
             }
 
             return Ok(mapper.Map<WalkDto>(walkDomainModel));
