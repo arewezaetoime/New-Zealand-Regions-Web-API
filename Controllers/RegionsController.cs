@@ -63,20 +63,27 @@ namespace NZWaks.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRegion([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
-            // Mapping the DTO to a model instance
-            var addRegionModel = mapper.Map<Region>(addRegionRequestDto);
-
-            var repositoryResponseModel = await regionRepository.CreateRegionAsync(addRegionModel);
-
-            // Map the added region model to a DTO for returning back to the client
-            if (repositoryResponseModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
+                // Mapping the DTO to a model instance
+                var addRegionModel = mapper.Map<Region>(addRegionRequestDto);
+
+                var repositoryResponseModel = await regionRepository.CreateRegionAsync(addRegionModel);
+
+                // Map the added region model to a DTO for returning back to the client
+                if (repositoryResponseModel == null)
+                {
+                    return NotFound();
+                }
+
+                var returnDto = mapper.Map<RegionDto>(addRegionModel);
+
+                return CreatedAtAction(nameof(GetRegionById), new { id = returnDto.Id }, returnDto);
             }
-
-            var returnDto = mapper.Map<RegionDto>(addRegionModel);
-
-            return CreatedAtAction(nameof(GetRegionById), new { id = returnDto.Id }, returnDto);
+            else
+            {
+                return BadRequest(ModelState);
+            }
 
         }
 
@@ -87,19 +94,26 @@ namespace NZWaks.API.Controllers
         [Route("{id:Guid}")]
         public async Task<IActionResult> UpdateRegion([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
         {
-            //map the dto to a domain model and pass it to the repository 
-            var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
-            regionDomainModel = await regionRepository.UpdateRegionAsync(id, regionDomainModel);
-
-            //check if the model is null then proceed accordingly 
-            if (regionDomainModel == null)
+            if (ModelState.IsValid)
             {
-                return NotFound();
-            }
+                //map the dto to a domain model and pass it to the repository 
+                var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
+                regionDomainModel = await regionRepository.UpdateRegionAsync(id, regionDomainModel);
 
-            //convert the model to dto and return 
-            var returnRegionDto = mapper.Map<RegionDto>(regionDomainModel);
-            return Ok(returnRegionDto);
+                //check if the model is null then proceed accordingly 
+                if (regionDomainModel == null)
+                {
+                    return NotFound();
+                }
+
+                //convert the model to dto and return 
+                var returnRegionDto = mapper.Map<RegionDto>(regionDomainModel);
+                return Ok(returnRegionDto);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // DELETE request - deleting a Region record from the database
