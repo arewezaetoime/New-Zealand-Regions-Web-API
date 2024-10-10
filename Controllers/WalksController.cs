@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NZWaks.API.CustomActionFilters;
 using NZWaks.API.Models.Domain;
 using NZWaks.API.Models.Dto;
 using NZWaks.API.Models.DTO;
@@ -21,24 +22,21 @@ namespace NZWaks.API.Controllers
             this.walkRepository = walkRepository;
         }
 
+
         //Create Walk method
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> Create([FromBody] AddWalkRequestDto createWalkDto)
         {
-            if (ModelState.IsValid)
-            {
-                // Map the DTO to a model instance
-                Walk walkModel = mapper.Map<Walk>(createWalkDto);
-                await walkRepository.CreateWalkAsync(walkModel);
+            // Map the DTO to a model instance
+            Walk walkModel = mapper.Map<Walk>(createWalkDto);
+            await walkRepository.CreateWalkAsync(walkModel);
 
-                // Map the created walk model to a DTO for returning back to the client
-                return Ok(mapper.Map<WalkDto>(walkModel));
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
+            // Map the created walk model to a DTO for returning back to the client
+            return Ok(mapper.Map<WalkDto>(walkModel));
         }
+
+
 
         [HttpGet]
         public async Task<IActionResult> GetAllWalks()
@@ -53,6 +51,7 @@ namespace NZWaks.API.Controllers
             return Ok(mapper.Map<List<WalkDto>>(walksDomainModels));
         }
 
+
         [HttpGet]
         [Route("{id:Guid}")]
         public async Task<IActionResult> GetWalkById([FromRoute] Guid id)
@@ -66,8 +65,10 @@ namespace NZWaks.API.Controllers
             return Ok(mapper.Map<WalkDto>(walkDomainModel));
         }
 
+
         [HttpPut]
         [Route("{id:Guid}")]
+        [ValidateModel]
         public async Task<IActionResult> UpdateWalk([FromRoute] Guid id, [FromBody] UpdateWalkDto updateWalkDto)
         {
             if (ModelState.IsValid)
@@ -87,6 +88,7 @@ namespace NZWaks.API.Controllers
                 return BadRequest(ModelState);
             }
         }
+
 
         [HttpDelete]
         [Route("{id:Guid}")]
