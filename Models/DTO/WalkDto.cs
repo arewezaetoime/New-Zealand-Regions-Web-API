@@ -16,6 +16,7 @@ namespace NZWaks.API.Models.DTO
         [MaxLength(255, ErrorMessage = "Max length should be 255 characters")]
         public string Description { get; set; }
         [Required]
+        [Range(0, 100)]
         public double LengthInKm { get; set; }
         public string? WalkImageUrl { get; set; }
 
