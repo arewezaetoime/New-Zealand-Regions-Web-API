@@ -71,22 +71,15 @@ namespace NZWaks.API.Controllers
         [ValidateModel]
         public async Task<IActionResult> UpdateWalk([FromRoute] Guid id, [FromBody] UpdateWalkDto updateWalkDto)
         {
-            if (ModelState.IsValid)
-            {
-                var walkDomainModel = mapper.Map<Walk>(updateWalkDto);
-                await walkRepository.UpdateWalkAsync(id, walkDomainModel);
+            var walkDomainModel = mapper.Map<Walk>(updateWalkDto);
+            await walkRepository.UpdateWalkAsync(id, walkDomainModel);
 
-                if (walkDomainModel == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(mapper.Map<WalkDto>(walkDomainModel));
-            }
-            else
+            if (walkDomainModel == null)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
+
+            return Ok(mapper.Map<WalkDto>(walkDomainModel));
         }
 
 

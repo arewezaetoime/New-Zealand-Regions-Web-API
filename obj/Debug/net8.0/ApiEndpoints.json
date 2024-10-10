@@ -88,7 +88,7 @@
     "Parameters": [
       {
         "Name": "createWalkDto",
-        "Type": "NZWaks.API.Models.DTO.WalkDto",
+        "Type": "NZWaks.API.Models.DTO.AddWalkRequestDto",
         "IsRequired": true
       }
     ],
