@@ -23,7 +23,7 @@ namespace NZWaks.API.Controllers
 
         //Create Walk method
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] WalkDto createWalkDto)
+        public async Task<IActionResult> Create([FromBody] AddWalkRequestDto createWalkDto)
         {
             // Map the DTO to a model instance
             Walk walkModel = mapper.Map<Walk>(createWalkDto);
