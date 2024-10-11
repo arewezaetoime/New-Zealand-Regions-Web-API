@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NZWaks.API.CustomActionFilters;
 using NZWaks.API.Models.Domain;
-using NZWaks.API.Models.Dto;
 using NZWaks.API.Models.DTO;
 using NZWaks.API.Repositories;
 
@@ -39,9 +37,16 @@ namespace NZWaks.API.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAllWalks()
+        public async Task<IActionResult> GetAllWalks(
+            [FromQuery] string? filterOn,
+            [FromQuery] string? filterQuery
+            /*[FromQuery] string? sortBy,
+            [FromQuery] bool? isAscending,
+            [FromQuery] int pageNumber,
+            [FromQuery] int pageSize*/
+            )
         {
-            var walksDomainModels = await walkRepository.GetAllWalksAsync();
+            var walksDomainModels = await walkRepository.GetAllWalksAsync(filterOn, filterQuery/*, sortBy, isAscending ??, pageNumber, pageSize*/);
 
             if (walksDomainModels == null)
             {
