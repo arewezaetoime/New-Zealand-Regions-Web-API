@@ -35,7 +35,7 @@ namespace NZWaks.API.Repositories
             return existingWalk;
         }
 
-        public async Task<List<Walk>> GetAllWalksAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool? isAscending = true)
+        public async Task<List<Walk>> GetAllWalksAsync(string? filterOn = null, string? filterQuery = null, string? sortBy = null, bool? isAscending = true, int pageNumber = 1, int pageSize = 1000)
         {
             var walks = dbContext.Walks.Include(x => x.Difficulty).Include(x => x.Region).AsQueryable();
 
@@ -66,7 +66,13 @@ namespace NZWaks.API.Repositories
                 
             }
 
-            return await walks.ToListAsync();
+            // Pagination
+
+            var skipResults = (pageNumber - 1) * pageSize;
+
+            return await walks.Skip(skipResults).Take(pageSize).ToListAsync();
+
+            /*return await walks.ToListAsync();*/
 
             // return await dbContext.Walks.Include(x => x.Difficulty).Include(x => x.Region).ToListAsync();
         }
