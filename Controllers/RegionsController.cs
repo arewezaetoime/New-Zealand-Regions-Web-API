@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NZWaks.API.CustomActionFilters;
-using NZWaks.API.Data;
-using NZWaks.API.Mappings;
-using NZWaks.API.Models.Domain;
-using NZWaks.API.Models.Dto;
-using NZWaks.API.Models.DTO;
-using NZWaks.API.Repositories;
+using NZWalks.API.CustomActionFilters;
+using NZWalks.API.Data;
+using NZWalks.API.Mappings;
+using NZWalks.API.Models.Domain;
+using NZWalks.API.Models.Dto;
+using NZWalks.API.Models.DTO;
+using NZWalks.API.Repositories;
 
-namespace NZWaks.API.Controllers
+namespace NZWalks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

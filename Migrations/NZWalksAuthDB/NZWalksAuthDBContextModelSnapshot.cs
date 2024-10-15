@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NZWaks.API.Data;
+using NZWalks.API.Data;
 
 #nullable disable
 
-namespace NZWaks.API.Migrations.NZWalksAuthDB
+namespace NZWalks.API.Migrations.NZWalksAuthDB
 {
     [DbContext(typeof(NZWalksAuthDBContext))]
     partial class NZWalksAuthDBContextModelSnapshot : ModelSnapshot

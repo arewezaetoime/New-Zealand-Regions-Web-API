@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace NZWaks.API.Migrations.NZWalksAuthDB
+namespace NZWalks.API.Migrations.NZWalksAuthDB
 {
     /// <inheritdoc />
     public partial class CreatingAuthdatabase : Migration

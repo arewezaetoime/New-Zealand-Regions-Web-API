@@ -1,4 +1,4 @@
-﻿namespace NZWaks.API.Models.DTO
+﻿namespace NZWalks.API.Models.DTO
 {
     public class DifficultyDto
     {

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using NZWaks.API.Models.Domain;
-using NZWaks.API.Models.Dto;
-using NZWaks.API.Models.DTO;
+using NZWalks.API.Models.Domain;
+using NZWalks.API.Models.Dto;
+using NZWalks.API.Models.DTO;
 
 
-namespace NZWaks.API.Mappings
+namespace NZWalks.API.Mappings
 {
     public class AutomapperProfiles : Profile
     {

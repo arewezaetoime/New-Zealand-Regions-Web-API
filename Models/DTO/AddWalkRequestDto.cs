@@ -1,7 +1,7 @@
-﻿using NZWaks.API.Models.Dto;
+﻿using NZWalks.API.Models.Dto;
 using System.ComponentModel.DataAnnotations;
 
-namespace NZWaks.API.Models.DTO
+namespace NZWalks.API.Models.DTO
 {
     public class AddWalkRequestDto
     {

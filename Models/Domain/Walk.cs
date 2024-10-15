@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
-namespace NZWaks.API.Models.Domain
+namespace NZWalks.API.Models.Domain
 {
     public class Walk
     {

@@ -1,15 +1,15 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using NZWaks.API.Data;
-using NZWaks.API.Mappings;
-using NZWaks.API.Repositories;
+using NZWalks.API.Data;
+using NZWalks.API.Mappings;
+using NZWalks.API.Repositories;
 using Microsoft.IdentityModel.Tokens;
 
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 
-namespace NZWaks
+namespace NZWalks
 {
     public class Program
     {
@@ -35,10 +35,10 @@ namespace NZWaks
             //Injecting Automapper
             builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
 
-            // Set up Identity 
+            // Set up Identity Provider
             builder.Services.AddIdentityCore<IdentityUser>()
                 .AddRoles<IdentityRole>()
-                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>("NZWaks")
+                .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>("NZWalks")
                 .AddEntityFrameworkStores<NZWalksAuthDBContext>()
                 .AddDefaultTokenProviders();
 
