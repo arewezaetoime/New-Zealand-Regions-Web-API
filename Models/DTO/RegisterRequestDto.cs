@@ -11,5 +11,8 @@ namespace NZWaks.API.Models.DTO
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required]
+        public string[] Roles { get; set; }
     }
 }
