@@ -30,9 +30,40 @@ namespace NZWaks.API.Controllers
 
             if (identityResult.Succeeded)
             {
-                // Add role to the user
+                if (registerRequestDto.Roles != null && registerRequestDto.Roles.Any())
+                {
+                    // Add role to the user
+                    identityResult = await UserManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
 
+                    if (identityResult.Succeeded)
+                    {
+                        return Ok(new { message = "User created successfully." });
+                    }
+                }
             }
+            return BadRequest(identityResult);
+        }
+
+        // POST: /api/Auth/Login
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
+        {
+            var user = await UserManager.FindByEmailAsync(loginRequestDto.Username);
+
+            if (user == null)
+            {
+                var checkPassResult = await UserManager.CheckPasswordAsync(user, loginRequestDto.Password);
+
+                if (checkPassResult)
+                {
+                    //create token
+
+                    return Ok();
+                    // return token 
+                }
+            }
+            return BadRequest("Something went wrong. Incorrect password!");
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NZWaks.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e079f08a24bfdf229343ae5dc0ba03ef08548d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30c1e51cadcfc07a06c5d65b500f2ee9d4c780e0")]
 [assembly: System.Reflection.AssemblyProductAttribute("NZWaks.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NZWaks.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
