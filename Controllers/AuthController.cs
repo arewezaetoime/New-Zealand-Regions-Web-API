@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NZWaks.API.Models.DTO;
+using NZWaks.API.Repositories;
 
 namespace NZWaks.API.Controllers
 {
@@ -9,13 +10,16 @@ namespace NZWaks.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        public AuthController(UserManager<IdentityUser> userManager)
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly ITokenRepository tokenRepository;
+
+        public AuthController(UserManager<IdentityUser> userManager, ITokenRepository tokenRepository)
         {
-            UserManager = userManager;
+            this.userManager = userManager;
+            this.tokenRepository = tokenRepository;
         }
 
-        public UserManager<IdentityUser> UserManager { get; }
-
+       
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequestDto registerRequestDto)
@@ -26,14 +30,14 @@ namespace NZWaks.API.Controllers
                 Email = registerRequestDto.Username
             };
 
-            var identityResult = await UserManager.CreateAsync(identityUser, registerRequestDto.Password);
+            var identityResult = await userManager.CreateAsync(identityUser, registerRequestDto.Password);
 
             if (identityResult.Succeeded)
             {
                 if (registerRequestDto.Roles != null && registerRequestDto.Roles.Any())
                 {
                     // Add role to the user
-                    identityResult = await UserManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
+                    identityResult = await userManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
 
                     if (identityResult.Succeeded)
                     {
@@ -49,15 +53,23 @@ namespace NZWaks.API.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto loginRequestDto)
         {
-            var user = await UserManager.FindByEmailAsync(loginRequestDto.Username);
+            var user = await userManager.FindByEmailAsync(loginRequestDto.Username);
 
-            if (user == null)
+            if (user != null)
             {
-                var checkPassResult = await UserManager.CheckPasswordAsync(user, loginRequestDto.Password);
+                var checkPassResult = await userManager.CheckPasswordAsync(user, loginRequestDto.Password);
 
                 if (checkPassResult)
                 {
+                    var roles = await userManager.GetRolesAsync(user);
+
                     //create token
+                    if(roles != null)
+                    {
+                        var jwtToken = tokenRepository.CreateJwtToken(user, roles.ToList());
+
+                        return Ok(jwtToken);
+                    }
 
                     return Ok();
                     // return token 
