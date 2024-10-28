@@ -29,7 +29,7 @@ namespace NZWalks
             builder.Services.AddDbContext<NZWalksDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksConnectionString")));
             builder.Services.AddDbContext<NZWalksAuthDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NZWalksAuthConnectionString")));
 
-            //Injecting IRegionRepository as well as IWalkRepository with implementation for SQL database
+            //Injecting IRegionRepository, IWalkRepository, TokenRepository with implementation for SQL database
             builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
             builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
             builder.Services.AddScoped<ITokenRepository, TokenRepository>();
