@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 
 using System.Text;
 using Microsoft.AspNetCore.Identity;
+using NZWaks.API.Repositories;
 
 namespace NZWalks
 {
@@ -31,6 +32,7 @@ namespace NZWalks
             //Injecting IRegionRepository as well as IWalkRepository with implementation for SQL database
             builder.Services.AddScoped<IRegionRepository, SQLRegionRepository>();
             builder.Services.AddScoped<IWalkRepository, SQLWalkRepository>();
+            builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 
             //Injecting Automapper
             builder.Services.AddAutoMapper(typeof(AutomapperProfiles));
