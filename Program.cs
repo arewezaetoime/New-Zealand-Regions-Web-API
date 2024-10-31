@@ -10,6 +10,8 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using NZWaks.API.Repositories;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.FileProviders;
+using static System.Net.WebRequestMethods;
 
 namespace NZWalks
 {
@@ -117,6 +119,12 @@ namespace NZWalks
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                //https://localhost:7104/Images/ssssss.png
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+                RequestPath = "/Images"
+            });
 
             app.MapControllers();
 
