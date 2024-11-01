@@ -12,6 +12,7 @@ using NZWaks.API.Repositories;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using static System.Net.WebRequestMethods;
+using Serilog;
 
 namespace NZWalks
 {
@@ -20,6 +21,16 @@ namespace NZWalks
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //Adding logging
+            var logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.File("Logs/NZWalks_Log.txt", rollingInterval: RollingInterval.Day)
+                .MinimumLevel.Information()
+                .CreateLogger();
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddSerilog(logger);
 
             // Add services to the container.
             builder.Services.AddControllers();
@@ -130,7 +141,6 @@ namespace NZWalks
 
             app.Run();
 
-            Console.WriteLine(Guid.NewGuid().ToString());
         }
     }
 }

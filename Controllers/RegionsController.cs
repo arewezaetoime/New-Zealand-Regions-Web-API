@@ -10,6 +10,7 @@ using NZWalks.API.Models.Domain;
 using NZWalks.API.Models.Dto;
 using NZWalks.API.Models.DTO;
 using NZWalks.API.Repositories;
+using System.Text.Json;
 
 namespace NZWalks.API.Controllers
 {
@@ -20,24 +21,42 @@ namespace NZWalks.API.Controllers
     {
         private readonly IRegionRepository regionRepository;
         private readonly IMapper mapper;
+        private readonly ILogger<RegionsController> logger;
 
-        public RegionsController(IRegionRepository regionRepository, IMapper mapper)
+        public RegionsController(IRegionRepository regionRepository, IMapper mapper, ILogger<RegionsController> logger)
         {
             this.regionRepository = regionRepository;
             this.mapper = mapper;
+            this.logger = logger;
         }
 
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        //[Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAllRegions()
         {
-            var regionDomainModels = await regionRepository.GetAllRegionsAsync();
+            logger.LogInformation("GetAllRegions action method was invoked");
 
+            try
+            {
+                //Throwing an exception for testing purposes only
+                //throw new ArgumentNullException("lgoerror");
 
-            //Map domain models to DTOs
-            var regionsDtos = mapper.Map<List<RegionDto>>(regionDomainModels);
-            // Return the DTO not the model
-            return Ok(regionsDtos);
+                var regionDomainModels = await regionRepository.GetAllRegionsAsync();
+
+                //Map domain models to DTOs
+                var regionsDtos = mapper.Map<List<RegionDto>>(regionDomainModels);
+                // Return the DTO not the model
+                return Ok(regionsDtos);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, ex.Message);
+                throw;
+            }
+            finally
+            {
+                logger.LogInformation("Exiting GetAllRegions action method");
+            }
         }
 
 

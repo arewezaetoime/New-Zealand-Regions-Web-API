@@ -15,6 +15,8 @@ namespace NZWaks.API.Repositories
             this.httpContextAccessor = httpContextAccessor;
             this.dbContext = dbContext;
         }
+
+
         public async Task<Image> Upload(Image image)
         {
             var localFilePath = Path.Combine(webHostEnvironment.ContentRootPath, "Images", $"{image.FileName}{image.FileExtension}");
