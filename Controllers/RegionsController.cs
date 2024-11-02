@@ -31,32 +31,17 @@ namespace NZWalks.API.Controllers
         }
 
         [HttpGet]
-        //[Authorize(Roles = "Reader")]
+        [Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAllRegions()
         {
             logger.LogInformation("GetAllRegions action method was invoked");
 
-            try
-            {
-                //Throwing an exception for testing purposes only
-                //throw new ArgumentNullException("lgoerror");
+            var regionDomainModels = await regionRepository.GetAllRegionsAsync();
 
-                var regionDomainModels = await regionRepository.GetAllRegionsAsync();
-
-                //Map domain models to DTOs
-                var regionsDtos = mapper.Map<List<RegionDto>>(regionDomainModels);
-                // Return the DTO not the model
-                return Ok(regionsDtos);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, ex.Message);
-                throw;
-            }
-            finally
-            {
-                logger.LogInformation("Exiting GetAllRegions action method");
-            }
+            //Map domain models to DTOs
+            var regionsDtos = mapper.Map<List<RegionDto>>(regionDomainModels);
+            // Return the DTO not the model
+            return Ok(regionsDtos);
         }
 
 

@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using static System.Net.WebRequestMethods;
 using Serilog;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace NZWalks
 {
@@ -125,6 +126,7 @@ namespace NZWalks
                 app.UseSwaggerUI();
             }
 
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
