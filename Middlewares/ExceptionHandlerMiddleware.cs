@@ -1,6 +1,7 @@
-﻿using System.Net;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using System.Net;
 
-namespace NZWaks.API.Middlewares
+namespace NZWalks.API.Middlewares
 {
     public class ExceptionHandlerMiddleware
     {

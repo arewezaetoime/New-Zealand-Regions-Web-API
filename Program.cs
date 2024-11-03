@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Identity;
 using NZWaks.API.Repositories;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
-using static System.Net.WebRequestMethods;
 using Serilog;
 using Microsoft.AspNetCore.Diagnostics;
+using NZWalks.API.Middlewares;
 
 namespace NZWalks
 {
@@ -126,7 +126,7 @@ namespace NZWalks
                 app.UseSwaggerUI();
             }
 
-            app.UseMiddleware<ExceptionHandlerMiddleware>();
+            app.UseMiddleware<API.Middlewares.ExceptionHandlerMiddleware>();    
             app.UseHttpsRedirection();
 
             app.UseAuthentication();
