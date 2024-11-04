@@ -47,7 +47,7 @@ namespace NZWaks.API.Controllers
 
         private void ValidateFileUpload(ImageUploadRequestDto request)
         {
-            var allowedExtensions = new string[] { ".jpg", ".jpeg", ".png" };
+            var allowedExtensions = new string[] { "jpg", "jpeg", "png" };
 
             if (!allowedExtensions.Contains(Path.GetExtension(request.File.FileName)))
             {
