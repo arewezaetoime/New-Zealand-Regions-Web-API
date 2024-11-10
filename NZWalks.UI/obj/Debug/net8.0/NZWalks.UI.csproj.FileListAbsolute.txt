@@ -13,6 +13,7 @@ C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI.RazorAssemblyInfo.cache
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI.RazorAssemblyInfo.cs
+C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI.sourcelink.json
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\staticwebassets\msbuild.NZWalks.UI.Microsoft.AspNetCore.StaticWebAssets.props
@@ -28,4 +29,3 @@ C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\refint\NZW
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI.pdb
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI.genruntimeconfig.cache
 C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\ref\NZWalks.UI.dll
-C:\Users\a1bg532545\Desktop\NZWalksWebAPI\NZWalks.UI\obj\Debug\net8.0\NZWalks.UI.sourcelink.json
