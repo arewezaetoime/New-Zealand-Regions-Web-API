@@ -40,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+	<Content Include="Images\**" CopyToPublishDirectory="PreserveNewest" />
     <Folder Include="Logs\" />
   </ItemGroup>
 
