@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: dotnet build NZWaks/NZWalks.sln --no-restore
     - name: Test
-      run: dotnet test NZWaks/NZWalks.sln --no-build --verbosity 
+      run: dotnet test NZWaks/NZWalks.sln --no-build --verbosity normal
