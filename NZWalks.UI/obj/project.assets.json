@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWalks.UI\\NZWalks.UI.csproj",
+      "projectUniqueName": "C:\\Users\\a1bg532545\\OneDrive - A1 Telekom Austria AG\\Desktop\\NZWalksWebAPI\\NZWalks.UI\\NZWalks.UI.csproj",
       "projectName": "NZWalks.UI",
-      "projectPath": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWalks.UI\\NZWalks.UI.csproj",
+      "projectPath": "C:\\Users\\a1bg532545\\OneDrive - A1 Telekom Austria AG\\Desktop\\NZWalksWebAPI\\NZWalks.UI\\NZWalks.UI.csproj",
       "packagesPath": "C:\\Users\\a1bg532545\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\a1bg532545\\Desktop\\NZWalksWebAPI\\NZWalks.UI\\obj\\",
+      "outputPath": "C:\\Users\\a1bg532545\\OneDrive - A1 Telekom Austria AG\\Desktop\\NZWalksWebAPI\\NZWalks.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\a1bg532545\\AppData\\Roaming\\NuGet\\NuGet.Config",

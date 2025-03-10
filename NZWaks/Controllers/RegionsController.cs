@@ -31,7 +31,7 @@ namespace NZWalks.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Reader")]
+        //[Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetAllRegions()
         {
             logger.LogInformation("GetAllRegions action method was invoked");
@@ -70,7 +70,7 @@ namespace NZWalks.API.Controllers
         //https://localhost:portnumber/api/regions
 
         [HttpPost]
-        [Authorize(Roles = "Writer")]
+        //[Authorize(Roles = "Writer")]
         [ValidateModel]
         public async Task<IActionResult> CreateRegion([FromBody] AddRegionRequestDto addRegionRequestDto)
         {
@@ -96,7 +96,7 @@ namespace NZWalks.API.Controllers
         //https://localhost:portnumber/api/regions/{id}
 
         [HttpPut]
-        [Authorize(Roles = "Writer")]
+        //[Authorize(Roles = "Writer")]
         [Route("{id:Guid}")]
         [ValidateModel]
         public async Task<IActionResult> UpdateRegion([FromRoute] Guid id, [FromBody] UpdateRegionRequestDto updateRegionRequestDto)
@@ -120,7 +120,7 @@ namespace NZWalks.API.Controllers
 
         // DELETE request - deleting a Region record from the database
         [HttpDelete]
-        [Authorize(Roles = "Writer")]
+        //[Authorize(Roles = "Writer")]
         [Route("{id:Guid}")]
 
         public async Task<IActionResult> DeleteRegionAsync([FromRoute] Guid id)
