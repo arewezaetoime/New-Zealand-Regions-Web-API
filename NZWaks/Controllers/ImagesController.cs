@@ -26,7 +26,6 @@ namespace NZWaks.API.Controllers
             if (ModelState.IsValid)
             {
 
-                //convert DTO to domain model 
                 var imageDomainModel = new Image
                 {
                     File = request.File,
@@ -36,7 +35,6 @@ namespace NZWaks.API.Controllers
                     FileDescription = request.FileDescription
                 };
 
-                //use repository to upload
                 await imageRepository.Upload(imageDomainModel);
 
                 return Ok(imageDomainModel);

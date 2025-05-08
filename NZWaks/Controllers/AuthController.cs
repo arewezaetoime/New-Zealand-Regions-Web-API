@@ -36,7 +36,6 @@ namespace NZWaks.API.Controllers
             {
                 if (registerRequestDto.Roles != null && registerRequestDto.Roles.Any())
                 {
-                    // Add role to the user
                     identityResult = await userManager.AddToRolesAsync(identityUser, registerRequestDto.Roles);
 
                     if (identityResult.Succeeded)

@@ -26,11 +26,9 @@ namespace NZWalks.API.Controllers
         [ValidateModel]
         public async Task<IActionResult> Create([FromBody] AddWalkRequestDto createWalkDto)
         {
-            // Map the DTO to a model instance
             Walk walkModel = mapper.Map<Walk>(createWalkDto);
             await walkRepository.CreateWalkAsync(walkModel);
 
-            // Map the created walk model to a DTO for returning back to the client
             return Ok(mapper.Map<WalkDto>(walkModel));
         }
 

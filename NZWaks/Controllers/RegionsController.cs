@@ -59,14 +59,11 @@ namespace NZWalks.API.Controllers
                 return NotFound();
             }
 
-            // Map the domain models to DTOs
             var regionDtoById = mapper.Map<RegionDto>(regionDomainModel);
-            // Return the DTO back to the client, but not the model itself 
             return Ok(regionDtoById);
         }
 
 
-        // POST request - creating a new Region record and adding it to the database
         //https://localhost:portnumber/api/regions
 
         [HttpPost]
@@ -92,7 +89,6 @@ namespace NZWalks.API.Controllers
 
 
 
-        // PUT request - creating a new Region record and adding it to the database
         //https://localhost:portnumber/api/regions/{id}
 
         [HttpPut]
@@ -106,19 +102,16 @@ namespace NZWalks.API.Controllers
             var regionDomainModel = mapper.Map<Region>(updateRegionRequestDto);
             regionDomainModel = await regionRepository.UpdateRegionAsync(id, regionDomainModel);
 
-            //check if the model is null then proceed accordingly 
             if (regionDomainModel == null)
             {
                 return NotFound();
             }
 
-            //convert the model to dto and return 
             var returnRegionDto = mapper.Map<RegionDto>(regionDomainModel);
             return Ok(returnRegionDto);
 
         }
 
-        // DELETE request - deleting a Region record from the database
         [HttpDelete]
         //[Authorize(Roles = "Writer")]
         [Route("{id:Guid}")]
